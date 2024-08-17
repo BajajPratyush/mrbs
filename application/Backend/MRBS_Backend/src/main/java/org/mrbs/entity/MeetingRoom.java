@@ -3,6 +3,7 @@ package org.mrbs.entity;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class MeetingRoom {
     private String roomId;
@@ -10,13 +11,35 @@ public class MeetingRoom {
     private int roomCredits;
     private int roomCapacity;
     private Set<Amenity> addedAmenities;
+    private TreeSet<Meeting> meetings;
 
-    public MeetingRoom(String roomId, String roomType, int roomCredits, int roomCapacity, Set<Amenity> compulsoryAmenities) {
+    public MeetingRoom(String roomId, String roomType, int roomCredits, int roomCapacity, Set<Amenity> addedAmenities, TreeSet<Meeting> meetings) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.roomCredits = roomCredits;
         this.roomCapacity = roomCapacity;
-        this.addedAmenities = compulsoryAmenities;
+        this.addedAmenities = addedAmenities;
+        this.meetings = meetings;
+    }
+
+    @Override
+    public String toString() {
+        return "MeetingRoom{" +
+                "roomId='" + roomId + '\'' +
+                ", roomType='" + roomType + '\'' +
+                ", roomCredits=" + roomCredits +
+                ", roomCapacity=" + roomCapacity +
+                ", addedAmenities=" + addedAmenities +
+                ", meetings=" + meetings +
+                '}';
+    }
+
+    public TreeSet<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(TreeSet<Meeting> meetings) {
+        this.meetings = meetings;
     }
 
     public String getRoomId() {
@@ -57,17 +80,6 @@ public class MeetingRoom {
 
     public void setAddedAmenities(Set<Amenity> addedAmenities) {
         this.addedAmenities = addedAmenities;
-    }
-
-    @Override
-    public String toString() {
-        return "MeetingRoom{" +
-                "roomId='" + roomId + '\'' +
-                ", roomType='" + roomType + '\'' +
-                ", roomCredits=" + roomCredits +
-                ", roomCapacity=" + roomCapacity +
-                ", addedAmenities=" + addedAmenities +
-                '}';
     }
 
     @Override
