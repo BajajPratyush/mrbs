@@ -20,9 +20,9 @@ public class AdminDaoImpl implements AdminDaoIntf {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "Bajaj@123";
-        String queryToCheckExist = "SELECT * FROM meeting_rooms WHERE room_id=?";
-        String queryToInsert = "INSERT INTO meeting_rooms (room_id, room_type, room_credits, room_capacity) VALUES (?,?,?,?)";
-        String insertAmenityQuery = "INSERT INTO meeting_room_amenities (room_id, amenity_id) VALUES (?, ?)";
+        String queryToCheckExist = "SELECT * FROM mrbs.meeting_rooms WHERE mrbs.room_id=?";
+        String queryToInsert = "INSERT INTO mrbs.meeting_rooms (room_id, room_type, room_credits, room_capacity) VALUES (?,?,?,?)";
+        String insertAmenityQuery = "INSERT INTO mrbs.meeting_room_amenities (room_id, amenity_id) VALUES (?, ?)";
         try(Connection con = DriverManager.getConnection(url,user,password)){
 
             PreparedStatement stmt = con.prepareStatement(queryToCheckExist);
@@ -78,9 +78,9 @@ public class AdminDaoImpl implements AdminDaoIntf {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "Bajaj@123";
-        String queryToCheckExist = "SELECT * FROM meeting_rooms WHERE room_id=?";
+        String queryToCheckExist = "SELECT * FROM mrbs.meeting_rooms WHERE room_id=?";
         //String queryToUpdateAmenity = "UPDATE meeting_room_amenities SET room_id=?,amenity_id=? ";
-        String queryToUpdateMeetingRoom = "UPDATE meeting_room_amenities SET room_id=?,room_type=?,room_credits=?,room_capacity=?";
+        String queryToUpdateMeetingRoom = "UPDATE mrbs.meeting_room_amenities SET room_id=?,room_type=?,room_credits=?,room_capacity=?";
         try(Connection con = DriverManager.getConnection(url,user,password)){
 
             PreparedStatement stmt = con.prepareStatement(queryToCheckExist);
@@ -109,7 +109,7 @@ public class AdminDaoImpl implements AdminDaoIntf {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "Bajaj@123";
-        String query1 = "SELECT * FROM meeting_rooms";
+        String query1 = "SELECT * FROM mrbs.meeting_rooms";
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement pstmt1 = conn.prepareStatement(query1)){
             ResultSet rs=pstmt1.executeQuery();
