@@ -1,6 +1,5 @@
 package org.mrbs.dao.impl;
 
-import com.sun.tools.jdeprscan.scan.Scan;
 import org.mrbs.dao.intf.AdminDaoIntf;
 import org.mrbs.entity.Amenity;
 import org.mrbs.entity.MeetingRoom;
@@ -9,7 +8,6 @@ import org.mrbs.model.exceptions.MeetingRoomAlreadyPresentException;
 import org.mrbs.service.impl.AmenityService;
 
 import java.sql.*;
-import java.util.Scanner;
 
 public class AdminDaoImpl implements AdminDaoIntf {
 
