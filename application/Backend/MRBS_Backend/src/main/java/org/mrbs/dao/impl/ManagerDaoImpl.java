@@ -1,6 +1,6 @@
 package org.mrbs.dao.impl;
 
-
+import org.mrbs.dao.intf.ManagerDaoIntf;
 import org.mrbs.entity.Meeting;
 import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 import static java.sql.DriverManager.getConnection;
 
-public class ManagerDaoImpl
+public class ManagerDaoImpl implements ManagerDaoIntf{
 
-{
     private final String jdbcUrl = "jdbc:mysql://localhost:3306/yourdb";
     private final String jdbcUser = "root";
     private final String jdbcPassword = "root";
