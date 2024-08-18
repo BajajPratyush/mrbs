@@ -1,6 +1,6 @@
 package org.mrbs.dao.impl;
 
-
+import org.mrbs.dao.intf.ManagerDaoIntf;
 import org.mrbs.entity.Meeting;
 import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
@@ -11,10 +11,9 @@ import java.util.ArrayList;
 
 import static java.sql.DriverManager.getConnection;
 
-public class ManagerDaoImpl
+public class ManagerDaoImpl implements ManagerDaoIntf{
 
-{
-    private final String jdbcUrl = "jdbc:mysql://localhost:3306/yourdb";
+    private final String jdbcUrl = "jdbc:mysql://localhost:3306/mrbsdb";
     private final String jdbcUser = "root";
     private final String jdbcPassword = "root";
 
@@ -48,13 +47,16 @@ public class ManagerDaoImpl
                 rs.getString("email"),
                 rs.getInt("phone"),
                 UserRole.valueOf(rs.getString("role")),
-                rs.getInt("credits")
+                rs.getInt("credits"),
+                findMeetingsByUserId(rs.getInt("id"))
         );
     }
 
 
-    private TreeSet<Meeting> findMeetingsByUserId(int userId) {
-        TreeSet<Meeting> meetings = new TreeSet<>();
+    private Meeting findMeetingsByUserId(int userId) {
+//        TreeSet<Meeting> meetings = new TreeSet<>();
+//        Meeting meetings = new Meeting();
+        Meeting meetings= null;
         String sql = "SELECT * FROM meetings WHERE user_id = ?";
 
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -62,12 +64,12 @@ public class ManagerDaoImpl
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Meeting meeting = new Meeting(
+                meetings = new Meeting(
                         rs.getTimestamp("start_time").toLocalDateTime(),
                         rs.getTimestamp("end_time").toLocalDateTime(),
                         rs.getString("title")
                 );
-                meetings.add(meeting);
+                return (meetings);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,7 +93,8 @@ public class ManagerDaoImpl
                         rs.getString("email"),
                         rs.getInt("phone"),
                         UserRole.valueOf(rs.getString("role")),
-                        rs.getInt("credits")
+                        rs.getInt("credits"),
+                        findMeetingsByUserId(rs.getInt("id"))
                 );
             }
         } catch (SQLException e) {

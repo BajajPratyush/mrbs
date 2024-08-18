@@ -3,10 +3,11 @@ package org.mrbs.service.impl;
 
 import org.mrbs.entity.User;
 import org.mrbs.dao.impl.ManagerDaoImpl;
+import org.mrbs.service.intf.ManagerServiceIntf;
 
 import java.util.List;
 
-public class ManagerService {
+public class ManagerService implements ManagerServiceIntf {
 
     private ManagerDaoImpl managerDao = new ManagerDaoImpl();
 

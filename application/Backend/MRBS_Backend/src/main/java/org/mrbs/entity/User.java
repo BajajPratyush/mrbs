@@ -14,14 +14,14 @@ public class User {
 
     private static int idGenerator = 0;
 
-    public User(int userId, String userName, String userEmail, int userNumber, UserRole userRole, int credits, TreeSet<Meeting> meetings) {
+    public User(int userId, String userName, String userEmail, int userNumber, UserRole userRole, int credits, Meeting m) {
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNumber = userNumber;
         this.userRole = userRole;
         this.credits = credits;
-        this.meetings = meetings;
+        this.meetings.add(m);
     }
 
     public int getUserId() {
@@ -76,8 +76,8 @@ public class User {
         this.credits = credits;
     }
 
-    public void setMeetings(TreeSet<Meeting> meetings) {
-        this.meetings = meetings;
+    public void setMeetings(Meeting meetings) {
+        this.meetings.add(meetings);
     }
 
 
