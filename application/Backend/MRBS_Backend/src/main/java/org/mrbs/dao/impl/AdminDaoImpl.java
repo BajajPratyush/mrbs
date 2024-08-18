@@ -39,17 +39,22 @@ public class AdminDaoImpl implements AdminDaoIntf {
 
             int rowsAffected = stmt1.executeUpdate();
 
-            if(mr.getRoomType() == "Classroom Training"){
-                mr.getAddedAmenities().add(AmenityService.amenities.get(1));
-                mr.getAddedAmenities().add(AmenityService.amenities.get(4));
-            } else if (mr.getRoomType() == "Online Training") {
-                mr.getAddedAmenities().add(AmenityService.amenities.get(1));
-                mr.getAddedAmenities().add(AmenityService.amenities.get(2));
-            }else if(mr.getRoomType() == "Conference Call"){
-                mr.getAddedAmenities().add(AmenityService.amenities.get(3));
-            }else if (mr.getRoomType() == "Business")
-                mr.getAddedAmenities().add(AmenityService.amenities.get(1));
-
+            switch (mr.getRoomType()) {
+                case "Classroom Training":
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(1));
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(4));
+                    break;
+                case "Online Training":
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(1));
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(2));
+                    break;
+                case "Conference Call":
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(3));
+                    break;
+                case "Business":
+                    mr.getAddedAmenities().add(AmenityService.amenities.get(1));
+                    break;
+            }
             if (mr.getAddedAmenities() != null) {
                 for (Amenity amenity : mr.getAddedAmenities()) {
                     try (PreparedStatement stmt2 = con.prepareStatement(insertAmenityQuery)) {
