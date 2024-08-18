@@ -89,7 +89,7 @@ public class ManagerDaoImpl implements ManagerDaoIntf{
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getInt("phone"),
-                        UserRole.valueOf(rs.getString("role")),
+                        UserRole.MANAGER,
                         rs.getInt("credits")
                 );
             }
