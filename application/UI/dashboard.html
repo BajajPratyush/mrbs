@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Room Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Meeting Room Dashboard</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">View Rooms</a></li>
+            <li><a href="#">Add Room</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="form-section">
+        <h2>Add Meeting Room</h2>
+        <form id="roomForm">
+            <div class="form-group">
+                <label for="roomName">Room Name:</label>
+                <input type="text" id="roomName" name="roomName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="capacity">Seating Capacity:</label>
+                <input type="number" id="capacity" name="capacity" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amenities">Amenities:</label>
+                <div class="custom-select" id="amenitySelect">
+                    <span class="selected-options">Select Amenities</span>
+                    <div class="options-container">
+                        <label><input type="checkbox" value="Projector"> Projector</label>
+                        <label><input type="checkbox" value="Conference Call Facility"> Conference Call Facility</label>
+                        <label><input type="checkbox" value="Whiteboard"> Whiteboard</label>
+                        <label><input type="checkbox" value="Water Dispenser"> Water Dispenser</label>
+                        <label><input type="checkbox" value="TV"> TV</label>
+                        <label><input type="checkbox" value="Coffee Machine"> Coffee Machine</label>
+                        <label><input type="checkbox" value="WiFi Connection"> WiFi Connection</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="credits">Per Hour Cost (Credits):</label>
+                <input type="number" id="credits" name="credits" min="0" required>
+            </div>
+
+            <button type="submit">Add Room</button>
+        </form>
+    </section>
+
+    <section class="room-list-section">
+        <h2>Meeting Rooms</h2>
+        <div id="roomList">
+            <!-- Meeting rooms will be listed here -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Meeting Room Booking System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
