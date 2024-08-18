@@ -5,9 +5,12 @@ import org.mrbs.entity.Amenity;
 import org.mrbs.entity.MeetingRoom;
 import org.mrbs.model.exceptions.InvalidMeetingRoomException;
 import org.mrbs.model.exceptions.MeetingRoomAlreadyPresentException;
+import org.mrbs.model.exceptions.MeetingRoomNotFound;
 import org.mrbs.service.impl.AmenityService;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDaoImpl implements AdminDaoIntf {
 
@@ -93,11 +96,37 @@ public class AdminDaoImpl implements AdminDaoIntf {
             stmt1.setInt(3,mr.getRoomCredits());
             stmt1.setInt(4,mr.getRoomCapacity());
 
-            int rowsAffected = stmt1.executeUpdate();
-
-            return rowsAffected;
+            return stmt1.executeUpdate();
         }catch (SQLException e){
             throw new InvalidMeetingRoomException();
+        }
+    }
+
+    @Override
+    public List<MeetingRoom> allMeetingRooms() throws ClassNotFoundException, SQLException, MeetingRoomNotFound {
+        List<MeetingRoom> meetingRoomList = new ArrayList<>();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/";
+        String user = "root";
+        String password = "Bajaj@123";
+        String query1 = "SELECT * FROM meeting_rooms";
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement pstmt1 = conn.prepareStatement(query1)){
+            ResultSet rs=pstmt1.executeQuery();
+            if(!rs.next()) {
+                throw new MeetingRoomNotFound();
+            }
+            do{
+                String id=rs.getString(1);
+                String type=rs.getString(2);
+                int credits=rs.getInt(3);
+                int capacity = rs.getInt(4);
+                MeetingRoom meetingRoom=new MeetingRoom(id,credits,type,capacity);
+                meetingRoomList.add(meetingRoom);
+            }while(rs.next());
+            return meetingRoomList;
+        } catch (SQLException e) {
+            throw new MeetingRoomNotFound();
         }
     }
 }
