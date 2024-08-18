@@ -1,4 +1,4 @@
 package org.mrbs.service;
 
-public class ManagerServiceIntf {
+public interface ManagerServiceIntf {
 }
