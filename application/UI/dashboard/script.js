@@ -1,72 +1,95 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const roomForm = document.getElementById('roomForm');
-    const roomList = document.getElementById('roomList');
-    const amenitySelect = document.getElementById('amenitySelect');
-    const selectedOptions = amenitySelect.querySelector('.selected-options');
-    const optionsContainer = amenitySelect.querySelector('.options-container');
-    const checkboxes = optionsContainer.querySelectorAll('input[type="checkbox"]');
+document.addEventListener('DOMContentLoaded', function () {
+    const selectedOptions = document.querySelector('.selected-options');
+    const optionsContainer = document.querySelector('.options-container');
+    const checkboxes = document.querySelectorAll('.options-container input[type="checkbox"]');
+    const meetingTypeSelect = document.getElementById('meeting-type');
+    const amenitiesOptions = document.querySelectorAll('.options-container input[type="checkbox"]');
+    const roomNameInput = document.getElementById('room-name');
+    const seatingCapacityInput = document.getElementById('seating-capacity');
+    const perHourCostInput = document.getElementById('per-hour-cost');
+    const bookingForm = document.getElementById('booking-form');
+    const bookingSummary = document.getElementById('booking-summary');
+    const summaryDetails = document.getElementById('summary-details');
 
-    // Toggle options container
-    selectedOptions.addEventListener('click', function(e) {
-        e.stopPropagation();
-        optionsContainer.classList.toggle('show');
-        selectedOptions.classList.toggle('active');
+    selectedOptions.addEventListener('click', function () {
+        this.classList.toggle('active');
+        optionsContainer.classList.toggle('active');
     });
 
-    // Close options when clicking outside
-    document.addEventListener('click', function() {
-        optionsContainer.classList.remove('show');
-        selectedOptions.classList.remove('active');
-    });
-
-    // Update selected options display
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', updateSelectedOptions);
-    });
-
-    function updateSelectedOptions() {
-        const selected = [];
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                selected.push(checkbox.value);
-            }
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            const selectedAmenities = [];
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedAmenities.push(checkbox.value);
+                }
+            });
+            selectedOptions.innerText = selectedAmenities.length ? selectedAmenities.join(', ') : 'Select Amenities';
         });
-        if (selected.length > 0) {
-            selectedOptions.textContent = selected.join(', ');
-        } else {
-            selectedOptions.textContent = 'Select Amenities';
-        }
+    });
+
+    function resetAmenities() {
+        amenitiesOptions.forEach(option => option.checked = false);
+        selectedOptions.innerText = 'Select Amenities';
     }
 
-    roomForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const roomName = document.getElementById('roomName').value;
-        const capacity = document.getElementById('capacity').value;
-        const amenities = [];
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                amenities.push(checkbox.value);
+    function selectMandatoryAmenities(amenities) {
+        const selectedAmenities = [];
+        amenitiesOptions.forEach(option => {
+            if (amenities.includes(option.value)) {
+                option.checked = true;
+                selectedAmenities.push(option.value);
             }
         });
-        const credits = document.getElementById('credits').value;
+        selectedOptions.innerText = selectedAmenities.length ? selectedAmenities.join(', ') : 'Select Amenities';
+    }
 
-        const roomDiv = document.createElement('div');
-        roomDiv.className = 'room';
-        roomDiv.innerHTML = `
-            <h3>${roomName}</h3>
-            <p><strong>Capacity:</strong> ${capacity}</p>
-            <p><strong>Amenities:</strong> ${amenities.join(', ')}</p>
-            <p><strong>Cost:</strong> ${credits} Credits/Hour</p>
+    meetingTypeSelect.addEventListener('change', function () {
+        resetAmenities();
+        
+        const selectedMeetingType = this.value;
+        let mandatoryAmenities = [];
+        
+        if (selectedMeetingType === 'classroom') {
+            mandatoryAmenities = ['Projector', 'Whiteboard'];
+        } else if (selectedMeetingType === 'online') {
+            mandatoryAmenities = ['Projector', 'WiFi'];
+        } else if (selectedMeetingType === 'conference') {
+            mandatoryAmenities = ['Conference Call'];
+        } else if (selectedMeetingType === 'business') {
+            mandatoryAmenities = ['Projector'];
+        }
+        
+        selectMandatoryAmenities(mandatoryAmenities);
+    });
+
+    bookingForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const roomName = roomNameInput.value;
+        const seatingCapacity = seatingCapacityInput.value;
+        const perHourCost = perHourCostInput.value;
+        const meetingType = meetingTypeSelect.value;
+        const selectedAmenities = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+
+        summaryDetails.innerHTML = `
+            <p><strong>Room Name:</strong> ${roomName}</p>
+            <p><strong>Seating Capacity:</strong> ${seatingCapacity}</p>
+            <p><strong>Per Hour Cost (in credits):</strong> ${perHourCost}</p>
+            <p><strong>Meeting Type:</strong> ${meetingType.charAt(0).toUpperCase() + meetingType.slice(1).replace('-', ' ')}</p>
+            <p><strong>Amenities:</strong> ${selectedAmenities.length ? selectedAmenities.join(', ') : 'None selected'}</p>
         `;
 
-        roomList.appendChild(roomDiv);
+        bookingSummary.style.display = 'block';
+    });
 
-        // Reset the form after submission
-        roomForm.reset();
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = false;
-        });
-        selectedOptions.textContent = 'Select Amenities';
+    document.addEventListener('click', function (event) {
+        if (!selectedOptions.contains(event.target) && !optionsContainer.contains(event.target)) {
+            selectedOptions.classList.remove('active');
+            optionsContainer.classList.remove('active');
+        }
     });
 });
+

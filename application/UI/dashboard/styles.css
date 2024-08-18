@@ -1,199 +1,147 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #b71c1c; /* Dark Red */
-    color: #ffffff;
+    background-color: #ff0000; /* Red header */
+    color: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #d32f2f; /* Bright Red */
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline-block;
+    margin: 0;
 }
 
 nav ul li a {
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 25px;
+    padding: 10px 20px;
+    color: #333;
     text-decoration: none;
-    transition: background-color 0.3s;
-    font-weight: bold;
 }
 
 nav ul li a:hover {
-    background-color: #b71c1c; /* Darker Red on hover */
+    background-color: #f2f2f2;
 }
 
-.form-section, .room-list-section {
-    padding: 30px;
-    max-width: 800px;
-    margin: 40px auto;
-    border-radius: 8px;
-    background-color: #fdfdfd; /* Slightly off-white */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    color: #b71c1c; /* Dark Red */
-    margin-bottom: 25px;
+footer {
+    background-color: #ff0000; /* Red footer */
+    color: white;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
+.form-section, .summary-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Form Styles */
 .form-group {
-    margin-bottom: 20px;
-    position: relative;
+    margin-bottom: 15px;
 }
 
 label {
-    font-weight: bold;
     display: block;
-    color: #333;
-    margin-bottom: 8px;
-    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], select {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-    transition: border-color 0.3s;
 }
 
-input[type="text"]:focus, input[type="number"]:focus {
-    border-color: #d32f2f;
-    outline: none;
-}
-
-.custom-select {
-    position: relative;
-    width: 100%;
+button {
+    background-color: #ff0000; /* Red button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #cc0000;
+}
+
+/* Dropdown Styles */
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
 .selected-options {
-    display: block;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #fff;
-    font-size: 16px;
-    user-select: none;
-    transition: border-color 0.3s;
-}
-
-.selected-options::after {
-    content: '▼';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    color: #666;
-}
-
-.selected-options.active::after {
-    content: '▲';
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .options-container {
     display: none;
     position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure options container is visible when the dropdown is active */
-.selected-options.active + .options-container {
-    display: block;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .options-container label {
     display: block;
-    padding: 10px 15px;
-    margin: 0;
+    padding: 10px;
     cursor: pointer;
-    font-weight: normal;
 }
 
 .options-container label:hover {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
 }
 
-.options-container input {
-    margin-right: 10px;
+.options-container.active {
+    display: block;
 }
 
-button {
-    background-color: #d32f2f; /* Bright Red */
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    transition: background-color 0.3s, transform 0.2s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-button:hover {
-    background-color: #b71c1c; /* Darker Red on hover */
-    transform: translateY(-2px);
-}
-
-.room {
-    background-color: #fff;
+/* Summary Section Styles */
+.summary-section {
+    display: none;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.room h3 {
-    margin-top: 0;
-    color: #d32f2f;
+#summary-details {
+    padding: 10px;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-}
 
