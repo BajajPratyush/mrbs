@@ -72,7 +72,34 @@ public class AdminDaoImpl implements AdminDaoIntf {
     }
 
     @Override
-    public int manageMeetingRoom(MeetingRoom mr) throws ClassNotFoundException, InvalidMeetingRoomException {
-        return 0;
+    public int manageMeetingRoom(MeetingRoom mr) throws ClassNotFoundException, InvalidMeetingRoomException, MeetingRoomAlreadyPresentException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/";
+        String user = "root";
+        String password = "Bajaj@123";
+        String queryToCheckExist = "SELECT * FROM meeting_rooms WHERE room_id=?";
+        //String queryToUpdateAmenity = "UPDATE meeting_room_amenities SET room_id=?,amenity_id=? ";
+        String queryToUpdateMeetingRoom = "UPDATE meeting_room_amenities SET room_id=?,room_type=?,room_credits=?,room_capacity=?";
+        try(Connection con = DriverManager.getConnection(url,user,password)){
+
+            PreparedStatement stmt = con.prepareStatement(queryToCheckExist);
+            PreparedStatement stmt1 = con.prepareStatement(queryToUpdateMeetingRoom);
+
+            stmt.setString(1,mr.getRoomId());
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next())
+                throw new MeetingRoomAlreadyPresentException();
+
+            stmt1.setString(1,mr.getRoomId());
+            stmt1.setString(2,mr.getRoomType());
+            stmt1.setInt(3,mr.getRoomCredits());
+            stmt1.setInt(4,mr.getRoomCapacity());
+
+            int rowsAffected = stmt1.executeUpdate();
+
+            return rowsAffected;
+        }catch (SQLException e){
+            throw new InvalidMeetingRoomException();
+        }
     }
 }
