@@ -1,9 +1,6 @@
 package org.mrbs.entity;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class MeetingRoom {
     private String roomId;
@@ -20,6 +17,15 @@ public class MeetingRoom {
         this.roomCapacity = roomCapacity;
         this.addedAmenities = addedAmenities;
         this.meetings = meetings;
+    }
+
+    public MeetingRoom(String roomId, int roomCredits, String roomType, int roomCapacity) {
+        this.roomId = roomId;
+        this.roomCredits = roomCredits;
+        this.roomType = roomType;
+        this.roomCapacity = roomCapacity;
+        this.addedAmenities = new HashSet<>();
+        this.meetings = new TreeSet<>();
     }
 
     @Override
