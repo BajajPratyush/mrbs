@@ -9,17 +9,19 @@ public class User {
     private String userEmail;
     private int userNumber;
     private UserRole userRole;
+    private int credits;
     private TreeSet<Meeting> meetings;
 
     private static int idGenerator = 0;
 
-    public User(String userName, String userEmail, int userNumber, UserRole userRole) {
-        this.userId = idGenerator++;
+    public User(int userId, String userName, String userEmail, int userNumber, UserRole userRole, int credits, TreeSet<Meeting> meetings) {
+        this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNumber = userNumber;
         this.userRole = userRole;
-        this.meetings = new TreeSet<>();
+        this.credits = credits;
+        this.meetings = meetings;
     }
 
     public int getUserId() {
@@ -61,6 +63,23 @@ public class User {
     public TreeSet<Meeting> getMeetings() {
         return meetings;
     }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    public void setMeetings(TreeSet<Meeting> meetings) {
+        this.meetings = meetings;
+    }
+
 
     public void addMeeting(LocalDateTime startTime, LocalDateTime endTime, String room) {
         this.meetings.add(new Meeting(startTime, endTime, room));
