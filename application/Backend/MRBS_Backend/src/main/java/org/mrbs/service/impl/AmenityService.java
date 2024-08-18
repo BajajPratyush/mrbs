@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class AmenityService implements AmenityServiceIntf {
 
-    private final Map<Integer, Amenity> amenities;
+    public static Map<Integer, Amenity> amenities;
 
     public AmenityService() {
-        this.amenities = new HashMap<>();
+        amenities = new HashMap<>();
         initializeAmenities(); // Initialize with predefined amenities if needed
     }
 
@@ -21,6 +21,9 @@ public class AmenityService implements AmenityServiceIntf {
         amenities.put(1, new Amenity("Projector", 5, 1));
          amenities.put(3, new Amenity("Conference Call Facility", 15, 3));
          amenities.put(4, new Amenity("Whiteboard", 5, 4));
+         amenities.put(5,new Amenity("Water Dispenser",5,5));
+         amenities.put(6,new Amenity("TV",10,6));
+         amenities.put(7,new Amenity("Coffee Machine",10,7));
         // Add more amenities as needed
     }
 
