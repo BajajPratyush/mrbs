@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room - Admin</title>
+    <link rel="stylesheet" href="edit-room.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Meeting Room</h1>
+    </header>
+    <main>
+        <form id="edit-room-form">
+            <!-- Similar to create-room.html but with pre-filled data for editing -->
+            <label for="room-name">Room Name:</label>
+            <input type="text" id="room-name" required value="Room A">
+        
+            <label for="capacity">Seating Capacity:</label>
+            <input type="number" id="capacity" required value="10">
+        
+            
+            <div class="dropdown">
+                <button class="dropbtn">Select Amenities</button>
+                <div id="amenities-dropdown" class="dropdown-content">
+                    <div class="dropdown-item">
+                        <input type="checkbox" id="projector" value="5">
+                        <label for="projector">Projector</label>
+                    </div>
+                    <div class="dropdown-item">
+                        <input type="checkbox" id="dispenser" value="5">
+                        <label for="dispenser">Water Dispenser</label>
+                    </div>
+                    <div class="dropdown-item">
+                        <input type="checkbox" id="whiteboard" value="10">
+                        <label for="whiteboard">Whiteboard</label>
+                    </div>
+                    <div class="dropdown-item">
+                        <input type="checkbox" id="wifi" value="10">
+                        <label for="wifi">WiFi</label>
+                    </div>
+                    <div class="dropdown-item">
+                        <input type="checkbox" id="conference-call" value="15">
+                        <label for="conference-call">Conference Call Facility</label>
+                    </div>
+                </div>
+            </div>
+        
+            <button type="submit">Update Room</button>
+        </form>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Automated Meeting Room Booking System</p>
+    </footer>
+    <script src="admin.js"></script>
+</body>
+</html>
