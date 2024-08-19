@@ -10,15 +10,22 @@ body {
     background-color: #D80027; /* Red background */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
+    padding-top: 80px; /* Space for the fixed header */
 }
 
 /* Header Styling */
 header {
-    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    z-index: 1000; /* Ensure the header is above other content */
 }
 
 header h1 {
@@ -26,6 +33,18 @@ header h1 {
     font-weight: 700;
     font-size: 2.5em;
     color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+/* Main Content Styling */
+main {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 60px; /* Space below the header */
 }
 
 /* Form Styling */
@@ -35,7 +54,6 @@ form {
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 320px;
-    margin: 0 auto;
     text-align: left;
 }
 
@@ -93,7 +111,8 @@ form button:hover {
 
 /* Footer Styling */
 footer {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     background-color: #333;
     color: white;
