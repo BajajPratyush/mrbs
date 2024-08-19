@@ -6,12 +6,12 @@ import java.util.Objects;
 public class Meeting implements Comparable<Meeting> {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String room;
+    private String roomId;
 
     public Meeting(LocalDateTime startTime, LocalDateTime endTime, String room) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.room = room;
+        this.roomId = room;
     }
 
     public LocalDateTime getStartTime() {
@@ -31,11 +31,11 @@ public class Meeting implements Comparable<Meeting> {
     }
 
     public String getRoom() {
-        return room;
+        return roomId;
     }
 
     public void setRoom(String room) {
-        this.room = room;
+        this.roomId = room;
     }
 
     @Override
@@ -50,12 +50,12 @@ public class Meeting implements Comparable<Meeting> {
         Meeting meeting = (Meeting) o;
         return Objects.equals(startTime, meeting.startTime) &&
                 Objects.equals(endTime, meeting.endTime) &&
-                Objects.equals(room, meeting.room);
+                Objects.equals(roomId, meeting.roomId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(startTime, endTime, room);
+        return Objects.hash(startTime, endTime, roomId);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Meeting implements Comparable<Meeting> {
         return "Meeting{" +
                 "startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", room='" + room + '\'' +
+                ", room='" + roomId + '\'' +
                 '}';
     }
 }

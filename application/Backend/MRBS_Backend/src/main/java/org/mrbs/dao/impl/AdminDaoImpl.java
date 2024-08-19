@@ -20,9 +20,9 @@ public class AdminDaoImpl implements AdminDaoIntf {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "Bajaj@123";
-        String queryToCheckExist = "SELECT * FROM mrbs.meeting_rooms WHERE mrbs.room_id=?";
+        String queryToCheckExist = "SELECT * FROM mrbs.meeting_rooms WHERE room_id=?";
         String queryToInsert = "INSERT INTO mrbs.meeting_rooms (room_id, room_type, room_credits, room_capacity) VALUES (?,?,?,?)";
-        String insertAmenityQuery = "INSERT INTO mrbs.meeting_room_amenities (room_id, amenity_id) VALUES (?, ?)";
+        String insertAmenityQuery = "INSERT INTO mrbs.meeting_room_amenities (room_id, amenity_name) VALUES (?, ?)";
         try(Connection con = DriverManager.getConnection(url,user,password)){
 
             PreparedStatement stmt = con.prepareStatement(queryToCheckExist);
@@ -60,7 +60,7 @@ public class AdminDaoImpl implements AdminDaoIntf {
                 for (Amenity amenity : mr.getAddedAmenities()) {
                     try (PreparedStatement stmt2 = con.prepareStatement(insertAmenityQuery)) {
                         stmt2.setString(1, mr.getRoomId());
-                        stmt2.setInt(2, amenity.getAmenityId());
+                        stmt2.setString(2, amenity.getAmenityName());
                         stmt2.executeUpdate();
                     }
                 }
@@ -68,8 +68,9 @@ public class AdminDaoImpl implements AdminDaoIntf {
 
             return rowsAffected;
         }catch (SQLException e){
-            throw new InvalidMeetingRoomException();
+            e.printStackTrace();
         }
+        return -1;
     }
 
     @Override
@@ -95,8 +96,9 @@ public class AdminDaoImpl implements AdminDaoIntf {
             stmt1.setString(2,mr.getRoomType());
             stmt1.setInt(3,mr.getRoomCredits());
             stmt1.setInt(4,mr.getRoomCapacity());
-
+            System.out.println("Hello");
             return stmt1.executeUpdate();
+
         }catch (SQLException e){
             throw new InvalidMeetingRoomException();
         }

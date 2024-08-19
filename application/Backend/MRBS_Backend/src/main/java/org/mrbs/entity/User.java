@@ -7,21 +7,29 @@ public class User {
     private int userId;
     private String userName;
     private String userEmail;
-    private int userNumber;
+    private long userNumber;
     private UserRole userRole;
     private int credits;
     private TreeSet<Meeting> meetings;
 
     private static int idGenerator = 0;
 
-    public User(int userId, String userName, String userEmail, int userNumber, UserRole userRole, int credits, TreeSet<Meeting> meetings) {
-        this.userId = userId;
+    public User(int userId, String userName, String userEmail, long userNumber, UserRole userRole, int credits, TreeSet<Meeting> meetings) {
+        this.userId = idGenerator++;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNumber = userNumber;
         this.userRole = userRole;
         this.credits = credits;
         this.meetings = meetings;
+    }
+
+    public User(int userId, String userName, String userEmail, long userNumber, UserRole userRole) {
+        this.userId = idGenerator++;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userNumber = userNumber;
+        this.userRole = userRole;
     }
 
     public int getUserId() {
@@ -44,11 +52,11 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public int getUserNumber() {
+    public long getUserNumber() {
         return userNumber;
     }
 
-    public void setUserNumber(int userNumber) {
+    public void setUserNumber(long userNumber) {
         this.userNumber = userNumber;
     }
 
