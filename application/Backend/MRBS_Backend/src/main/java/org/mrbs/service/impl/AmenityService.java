@@ -1,7 +1,7 @@
 package org.mrbs.service.impl;
 
 import org.mrbs.entity.Amenity;
-import org.mrbs.service.AmenityServiceIntf;
+import org.mrbs.service.intf.AmenityServiceIntf;
 
 import java.util.HashMap;
 import java.util.Map;

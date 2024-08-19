@@ -5,7 +5,7 @@ import org.mrbs.entity.MeetingRoom;
 import org.mrbs.model.exceptions.InvalidMeetingRoomException;
 import org.mrbs.model.exceptions.MeetingRoomAlreadyPresentException;
 import org.mrbs.model.exceptions.MeetingRoomNotFound;
-import org.mrbs.service.AdminServiceIntf;
+import org.mrbs.service.intf.AdminServiceIntf;
 
 import java.sql.SQLException;
 import java.util.List;
