@@ -1,0 +1,41 @@
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    user_email VARCHAR(255) NOT NULL,
+    user_number VARCHAR(15),
+    user_role ENUM('ADMIN', 'MANAGER', 'MEMBER') NOT NULL,
+    credits INT DEFAULT 0
+);
+
+
+CREATE TABLE meeting_rooms (
+    room_id VARCHAR(255) PRIMARY KEY,
+    room_type VARCHAR(255) NOT NULL,
+    room_credits INT NOT NULL,
+    room_capacity INT NOT NULL
+);
+
+CREATE TABLE meeting_room_amenities (
+    room_id VARCHAR(255),
+    amenity_name VARCHAR(255),
+    PRIMARY KEY (room_id, amenity_name),
+    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE meetings (
+    meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    room_id VARCHAR(255),
+    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE user_meetings (
+    user_id INT,
+    meeting_id INT,
+    PRIMARY KEY (user_id, meeting_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (meeting_id) REFERENCES meetings(meeting_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+

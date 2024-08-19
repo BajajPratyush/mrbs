@@ -1,0 +1,465 @@
+/* admin.css */
+
+/* Similar structure to manager.css, 
+   but with possible additional styles 
+   specific to the admin's needs */
+   /* body {
+    font-family: Arial, sans-serif;
+    background-color: #eb3434;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffffc5;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+main.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.dashboard-option {
+    background-color: #eb9b9b;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-option:hover {
+    transform: scale(1.1);
+}
+
+.dashboard-option i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.dashboard-option p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form label {
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+form input[type="text"], form input[type="number"] {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form fieldset {
+    margin-top: 20px;
+    border: none;
+    padding: 0;
+}
+
+form fieldset legend {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+form fieldset label {
+    display: block;
+    margin: 5px 0;
+}
+
+form button[type="submit"] {
+    background-color: #E33B3B;
+    color: #FFFFFF;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #C42F2F;
+} */
+
+
+
+
+
+
+
+
+/* 
+/* Global Styles */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}  */
+
+/* 
+body {
+    background-color: #D80027; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+} */
+
+/* Container for Centering Content */
+/* .container {
+    width: 100%;
+} */
+
+/* Title Styling */
+/* .title h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.title p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 40px;
+} */
+
+/* Dashboard Option Styling */
+/* .dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-option1 {
+    background-color: #F8B8C0; 
+    padding: 40px;
+    border-radius: 15px;
+    width: 200px;
+    height:200px;
+    margin: 140 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+}
+
+
+
+.dashboard-option1:hover {
+    transform: scale(1.05);
+    background-color: #ffb3c2;
+}
+
+
+.dashboard-option1 i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.dashboard-option1 p {
+    font-size: 1.2em;
+    margin: 0;
+    color: black;
+} */
+
+
+
+/* Form Styling */
+/* form {
+    background-color: #F8B8C0; 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+} */
+
+/* .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 1.2em;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    /* font-size: 1em;
+}  */
+
+/* button {
+    margin-top: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+#error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+} */
+
+/* Footer Styling */
+/* footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}  */ 
+
+
+
+
+
+
+
+
+
+
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #D80027; /* Red background */
+    display: flex; /* Center content horizontally and vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Container for Centering Content */
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title Styling */
+.title h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+    color: rgba(255, 255, 255, 0.445);
+    margin-bottom: 20px; /* Increased margin for spacing */
+    text-decoration-color: #f0f0f0;
+
+    
+}
+
+.title p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/* Dashboard Option Styling */
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Reduced gap for closer alignment */
+    flex-wrap: wrap;
+}
+
+.dashboard-option1 {
+    background-color: #F8B8C0; 
+    padding: 20px; 
+    border-radius: 15px;
+    width: 180px; 
+    height: 180px; 
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+
+    background-color: #F8B8C0; /* Light pink background */
+    padding: 20px; /* Reduced padding for smaller size */
+    border-radius: 15px;
+    width: 180px; /* Reduced width for closer alignment */
+    height: 180px; /* Reduced height for closer alignment */
+    margin: 20px; /* Adjusted margin for spacing around the boxes */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center; /* Center text and icons */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dashboard-option1:hover {
+    transform: scale(1.05);
+    background-color: #ffb3c2;
+}
+
+.dashboard-option1 i {
+    font-size: 2em; /* Adjusted icon size */
+    margin-bottom: 10px;
+    color: black;
+}
+
+.dashboard-option1 p {
+    font-size: 1.1em; /* Adjusted text size */
+    margin: 0;
+    color: black;
+}
+
+/* Form Styling */
+form {
+    background-color: #F8B8C0; /* Light pink background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 1.2em;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    font-size: 1em;
+}
+
+button {
+    margin-top: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+#error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+} 
+
+.dashboard-option1 a {
+    text-decoration: none; /* Remove underline from links */
+    color: black; /* Ensures the text color is black */
+}

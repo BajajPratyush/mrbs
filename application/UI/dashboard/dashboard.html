@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Room Booking Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Automated Meeting Room Booking System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Create Room</a></li>
+            <li><a href="#">View Rooms</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+    <section class="form-section">
+        <h2>Book a Meeting Room</h2>
+        <form id="booking-form">
+            <div class="form-group">
+                <label for="room-name">Room Name:</label>
+                <input type="text" id="room-name" name="room-name" required>
+            </div>
+            <div class="form-group">
+                <label for="seating-capacity">Seating Capacity:</label>
+                <input type="number" id="seating-capacity" name="seating-capacity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="per-hour-cost">Per Hour Cost (in credits):</label>
+                <input type="number" id="per-hour-cost" name="per-hour-cost" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="meeting-type">Meeting Type:</label>
+                <select id="meeting-type" name="meeting-type" required>
+                    <option value="" disabled selected>Select a meeting type</option>
+                    <option value="classroom">Classroom Training</option>
+                    <option value="online">Online Training</option>
+                    <option value="conference">Conference Call</option>
+                    <option value="business">Business Meeting</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amenities">Amenities:</label>
+                <div class="custom-select">
+                    <div class="selected-options">Select Amenities</div>
+                    <div class="options-container">
+                        <label><input type="checkbox" value="Projector"> Projector</label>
+                        <label><input type="checkbox" value="WiFi"> WiFi Connection</label>
+                        <label><input type="checkbox" value="Conference Call"> Conference Call Facility</label>
+                        <label><input type="checkbox" value="Whiteboard"> Whiteboard</label>
+                        <label><input type="checkbox" value="Water Dispenser"> Water Dispenser</label>
+                        <label><input type="checkbox" value="TV"> TV</label>
+                        <label><input type="checkbox" value="Coffee Machine"> Coffee Machine</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Book Room</button>
+        </form>
+    </section>
+    <section id="booking-summary" class="summary-section">
+        <h2>Booking Summary</h2>
+        <div id="summary-details">
+            <!-- Summary will be displayed here -->
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Automated Meeting Room Booking System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
