@@ -7,11 +7,6 @@ CREATE TABLE users (
     credits INT DEFAULT 0
 );
 
-CREATE TABLE amenities (
-    amenity_id INT PRIMARY KEY,
-    amenity_name VARCHAR(255) NOT NULL,
-    amenity_creds INT NOT NULL
-);
 
 CREATE TABLE meeting_rooms (
     room_id VARCHAR(255) PRIMARY KEY,
@@ -22,10 +17,9 @@ CREATE TABLE meeting_rooms (
 
 CREATE TABLE meeting_room_amenities (
     room_id VARCHAR(255),
-    amenity_id INT,
-    PRIMARY KEY (room_id, amenity_id),
-    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id),
-    FOREIGN KEY (amenity_id) REFERENCES amenities(amenity_id)
+    amenity_name VARCHAR(255),
+    PRIMARY KEY (room_id, amenity_name),
+    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE meetings (
@@ -33,15 +27,15 @@ CREATE TABLE meetings (
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
     room_id VARCHAR(255),
-    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id)
+    FOREIGN KEY (room_id) REFERENCES meeting_rooms(room_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE user_meetings (
     user_id INT,
     meeting_id INT,
     PRIMARY KEY (user_id, meeting_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (meeting_id) REFERENCES meetings(meeting_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (meeting_id) REFERENCES meetings(meeting_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
