@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Create Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin - Create Room</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Room Details</a></li>
+                <li><a href="view-meetings.html">View Meetings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Create New Room</h2>
+        <form id="create-room-form">
+            <label for="room-name">Room Name:</label>
+            <input type="text" id="room-name" name="room-name" required>
+            
+            <label for="capacity">Seating Capacity:</label>
+            <input type="number" id="capacity" name="capacity" required>
+
+            <fieldset>
+                <legend>Amenities:</legend>
+                <label><input type="checkbox" name="amenities" value="Projector"> Projector</label>
+                <label><input type="checkbox" name="amenities" value="WiFi Connection"> WiFi Connection</label>
+                <label><input type="checkbox" name="amenities" value="Conference Call Facility"> Conference Call Facility</label>
+                <label><input type="checkbox" name="amenities" value="Whiteboard"> Whiteboard</label>
+                <label><input type="checkbox" name="amenities" value="Water Dispenser"> Water Dispenser</label>
+                <label><input type="checkbox" name="amenities" value="TV"> TV</label>
+                <label><input type="checkbox" name="amenities" value="Coffee Machine"> Coffee Machine</label>
+            </fieldset>
+
+            <button type="submit">Add Room</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Automated Meeting Room Booking System</p>
+    </footer>
+    <script src="admin.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main class="dashboard">
+        <div class="dashboard-option1">
+            <a href="create-room.html">
+                <i class="fas fa-plus-circle"></i>
+                <p>Create Meeting Room</p>
+            </a>
+        </div>
+        <div class="dashboard-option1">
+            <a href="manage-rooms.html">
+                <i class="fas fa-cogs"></i>
+                <p>Manage Meeting Rooms</p>
+            </a>
+        </div>
+        <div class="dashboard-option1">
+            <a href="add-users.html">
+                <i class="fas fa-user-plus"></i>
+                <p>Add Users</p>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Automated Meeting Room Booking System</p>
+    </footer>
+</body>
+</html>

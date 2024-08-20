@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #D80027; /* Red background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 80px; /* Space for the fixed header */
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    z-index: 1000; /* Ensure the header is above other content */
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+/* Main Content Styling */
+main {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 60px; /* Space below the header */
+}
+
+/* Form Styling */
+form {
+    background-color: #F8B8C0; /* Light pink background */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: left;
+}
+
+form label {
+    font-weight: 500;
+    font-size: 1em;
+    color: black;
+    margin-bottom: 8px;
+    display: block;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="checkbox"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+form label[for="projector"],
+form label[for="wifi"],
+form label[for="conference-call"] {
+    margin-bottom: 15px;
+    display: block;
+    font-size: 1em;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

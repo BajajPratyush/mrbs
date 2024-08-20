@@ -1,4 +1,4 @@
-package org.mrbs.service;
+package org.mrbs.service.intf;
 
 import org.mrbs.entity.MeetingRoom;
 

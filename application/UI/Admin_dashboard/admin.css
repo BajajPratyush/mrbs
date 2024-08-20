@@ -1,0 +1,153 @@
+/* admin.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #D80027; /* Red background */
+    display: flex; /* Center content horizontally and vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 80px; /* Space for the fixed header */
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    z-index: 1000; /* Ensure the header is above other content */
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Dashboard Styling */
+main.dashboard {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Reduced gap for closer alignment */
+    flex-wrap: wrap;
+    padding-top: 60px; /* Space below the header */
+}
+
+.dashboard-option1 {
+    background-color: #F8B8C0; 
+    padding: 20px; 
+    border-radius: 15px;
+    width: 180px; 
+    height: 180px; 
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-option1:hover {
+    transform: scale(1.05);
+    background-color: #ffb3c2;
+}
+
+.dashboard-option1 i {
+    font-size: 2em; /* Adjusted icon size */
+    margin-bottom: 10px;
+    color: black;
+}
+
+.dashboard-option1 p {
+    font-size: 1.1em; /* Adjusted text size */
+    margin: 0;
+    color: black;
+}
+
+/* Form Styling */
+form {
+    background-color: #F8B8C0; /* Light pink background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 1.2em;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    font-size: 1em;
+}
+
+button {
+    margin-top: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+#error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.dashboard-option1 a {
+    text-decoration: none; /* Remove underline from links */
+    color: black; /* Ensures the text color is black */
+}
