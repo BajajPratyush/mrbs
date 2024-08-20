@@ -18,13 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
-            const selectedAmenities = [];
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    selectedAmenities.push(checkbox.value);
-                }
-            });
-            selectedOptions.innerText = selectedAmenities.length ? selectedAmenities.join(', ') : 'Select Amenities';
+            calculateAndDisplayCost();
         });
     });
 
@@ -42,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         selectedOptions.innerText = selectedAmenities.length ? selectedAmenities.join(', ') : 'Select Amenities';
+        calculateAndDisplayCost();
     }
 
     meetingTypeSelect.addEventListener('change', function () {
@@ -62,6 +57,49 @@ document.addEventListener('DOMContentLoaded', function () {
         
         selectMandatoryAmenities(mandatoryAmenities);
     });
+
+    function calculateAndDisplayCost() {
+        let cost = 0;
+        const seatingCapacity = parseInt(seatingCapacityInput.value);
+
+        if (seatingCapacity <= 5) {
+            cost += 0;
+        } else if (seatingCapacity > 5 && seatingCapacity <= 10) {
+            cost += 10;
+        } else if (seatingCapacity > 10) {
+            cost += 20;
+        }
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                switch (checkbox.value) {
+                    case 'Projector':
+                        cost += 5;
+                        break;
+                    case 'WiFi':
+                        cost += 10;
+                        break;
+                    case 'Conference Call':
+                        cost += 15;
+                        break;
+                    case 'Whiteboard':
+                        cost += 5;
+                        break;
+                    case 'Water Dispenser':
+                        cost += 5;
+                        break;
+                    case 'TV':
+                        cost += 10;
+                        break;
+                    case 'Coffee Machine':
+                        cost += 10;
+                        break;
+                }
+            }
+        });
+
+        perHourCostInput.value = cost;
+    }
 
     bookingForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -91,5 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
             optionsContainer.classList.remove('active');
         }
     });
-});
 
+    seatingCapacityInput.addEventListener('input', function () {
+        calculateAndDisplayCost();
+    });
+});
