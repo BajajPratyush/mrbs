@@ -11,6 +11,7 @@ import org.mrbs.service.impl.AmenityService;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class AdminDaoImpl implements AdminDaoIntf {
 
@@ -68,9 +69,8 @@ public class AdminDaoImpl implements AdminDaoIntf {
 
             return rowsAffected;
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new InvalidMeetingRoomException(e);
         }
-        return -1;
     }
 
     @Override
@@ -111,20 +111,45 @@ public class AdminDaoImpl implements AdminDaoIntf {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "Bajaj@123";
-        String query1 = "SELECT * FROM mrbs.meeting_rooms";
+        String query1 = "SELECT mr.room_id, mr.room_type, mr.room_credits, mr.room_capacity, mra.amenity_name " +
+                "FROM meeting_rooms mr " +
+                "LEFT JOIN meeting_room_amenities mra ON mr.room_id = mra.room_id";
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement pstmt1 = conn.prepareStatement(query1)){
-            ResultSet rs=pstmt1.executeQuery();
+             ResultSet rs=pstmt1.executeQuery();
+            String currentRoomId = null;
+            MeetingRoom currentMeetingRoom = null;
             if(!rs.next()) {
                 throw new MeetingRoomNotFound();
             }
             do{
-                String id=rs.getString(1);
-                String type=rs.getString(2);
-                int credits=rs.getInt(3);
-                int capacity = rs.getInt(4);
-                MeetingRoom meetingRoom=new MeetingRoom(id,credits,type,capacity);
-                meetingRoomList.add(meetingRoom);
+                String roomId = rs.getString("room_id");
+                String roomType = rs.getString("room_type");
+                int roomCredits = rs.getInt("room_credits");
+                int roomCapacity = rs.getInt("room_capacity");
+                String amenityName = rs.getString("amenity_name");
+
+                if (currentRoomId == null || !currentRoomId.equals(roomId)) {
+                    // Save the previous room if exists
+                    if (currentMeetingRoom != null) {
+                        meetingRoomList.add(currentMeetingRoom);
+                    }
+                    // Start a new MeetingRoom
+                    currentMeetingRoom = new MeetingRoom(roomId,  roomCredits,roomType, roomCapacity);
+                    currentRoomId = roomId;
+                }
+                // Add the amenity to the current MeetingRoom
+                if (amenityName != null) {
+                    Set<Amenity> lst = currentMeetingRoom.getAddedAmenities();
+                    Amenity amenity = AmenityService.getAmenityByName(amenityName);
+                    if(amenity!=null)
+                        lst.add(amenity);
+                    currentMeetingRoom.setAddedAmenities(lst);
+                }
+                // Add the last room
+                if (currentMeetingRoom != null) {
+                    meetingRoomList.add(currentMeetingRoom);
+                }
             }while(rs.next());
             return meetingRoomList;
         } catch (SQLException e) {

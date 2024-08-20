@@ -36,7 +36,6 @@ public class MeetingRoom {
                 ", roomCredits=" + roomCredits +
                 ", roomCapacity=" + roomCapacity +
                 ", addedAmenities=" + addedAmenities +
-                ", meetings=" + meetings +
                 '}';
     }
 

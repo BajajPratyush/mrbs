@@ -15,17 +15,17 @@ public class BeanFactory {
     private AdminDaoIntf adminDao;
     private AdminService adminService;
     private AdminController adminController;
-    private AmenityService amenityService;
 
     private ManagerController managerController;
     private ManagerServiceIntf managerServiceIntf;
     private ManagerDaoIntf managerDaoIntf;
 
     public BeanFactory(){
+        new AmenityService();
         adminDao = new AdminDaoImpl();
         adminService = new AdminService(adminDao);
         adminController = new AdminController(adminService);
-        amenityService = new AmenityService();
+
 
         managerController = new ManagerController();
         managerDaoIntf = new ManagerDaoImpl();
