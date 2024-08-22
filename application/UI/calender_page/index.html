@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Room Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meetings Scheduled</h1>
+        <div class="calendar">
+            <div class="calendar-header">
+                <button id="prevWeek">&lt; Previous Week</button>
+                
+                <!-- New date selector and calendar button -->
+                <div class="date-selector">
+                    <label for="datePicker">Select Date: </label>
+                    <input type="date" id="datePicker">
+                </div>
+                
+                <div id="weekRange">Aug 19 - Aug 25</div>
+                <button id="nextWeek">Next Week &gt;</button>
+            </div>
+            <div class="calendar-body">
+                <div class="day-names">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                </div>
+                <div id="weekDays" class="days">
+                    <!-- Weekdays and meetings will be dynamically injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for meeting details -->
+    <div id="meetingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-info">
+                <span>Date       :</span> <span id="modalDate"></span>
+            </div>
+            <div class="modal-info">
+                <span>Room Code  :</span> <span id="modalRoomCode"></span>
+            </div>
+            <div class="modal-info">
+                <span>Start Time :</span> <span id="modalStartTime"></span>
+            </div>
+            <div class="modal-info">
+                <span>End Time   :</span> <span id="modalEndTime"></span>
+            </div>
+            <div class="modal-info">
+                <span>Duration   :</span> <span id="modalDuration"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

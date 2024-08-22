@@ -1,0 +1,17 @@
+[
+    { "date": "2024-08-18", "roomCode": "A101", "startTime": "10:00 AM", "endTime": "11:00 AM", "duration": "1 hour", "title": "Team Meeting" },
+    { "date": "2024-08-18", "roomCode": "B202", "startTime": "1:00 PM", "endTime": "2:00 PM", "duration": "1 hour", "title": "Project Review" },
+    { "date": "2024-08-19", "roomCode": "C303", "startTime": "2:00 PM", "endTime": "4:00 PM", "duration": "2 hours", "title": "Client Presentation" },
+    { "date": "2024-08-20", "roomCode": "D404", "startTime": "9:00 AM", "endTime": "10:00 AM", "duration": "1 hour", "title": "Daily Standup" },
+    { "date": "2024-08-20", "roomCode": "E505", "startTime": "11:00 AM", "endTime": "12:00 PM", "duration": "1 hour", "title": "Sprint Planning" },
+    { "date": "2024-08-21", "roomCode": "F606", "startTime": "3:00 PM", "endTime": "4:00 PM", "duration": "1 hour", "title": "Design Review" },
+    { "date": "2024-08-22", "roomCode": "G707", "startTime": "10:00 AM", "endTime": "11:30 AM", "duration": "1.5 hours", "title": "Strategy Meeting" },
+    { "date": "2024-08-22", "roomCode": "H808", "startTime": "2:00 PM", "endTime": "3:00 PM", "duration": "1 hour", "title": "Weekly Retrospective" },
+    { "date": "2024-08-23", "roomCode": "I909", "startTime": "11:00 AM", "endTime": "12:00 PM", "duration": "1 hour", "title": "Team Lunch" },
+    { "date": "2024-08-23", "roomCode": "J010", "startTime": "2:00 PM", "endTime": "3:00 PM", "duration": "1 hour", "title": "Customer Feedback" },
+    { "date": "2024-08-24", "roomCode": "K111", "startTime": "9:00 AM", "endTime": "10:30 AM", "duration": "1.5 hours", "title": "Quarterly Review" },
+    { "date": "2024-08-30", "roomCode": "J010", "startTime": "2:00 PM", "endTime": "3:00 PM", "duration": "1 hour", "title": "Customer Feedback" },
+    { "date": "2024-09-02", "roomCode": "K111", "startTime": "9:00 AM", "endTime": "10:30 AM", "duration": "1.5 hours", "title": "Quarterly Review" },
+    { "date": "2024-09-03", "roomCode": "L222", "startTime": "10:00 AM", "endTime": "11:00 AM", "duration": "1 hour", "title": "Planning Session" }
+
+]
