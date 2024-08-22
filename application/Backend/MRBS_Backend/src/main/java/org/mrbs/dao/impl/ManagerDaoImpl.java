@@ -5,6 +5,7 @@ import org.mrbs.entity.Meeting;
 import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.ManagerNotFound;
+import org.mrbs.model.exceptions.MeetingRoomNotFound;
 
 import java.util.*;
 import java.sql.*;
@@ -22,7 +23,7 @@ public class ManagerDaoImpl implements ManagerDaoIntf{
         return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
     }
 
-    public List<User> findAllManagers()  {
+    public List<User> findAllManagers()  throws ManagerNotFound, ClassNotFoundException, SQLException {
         List<User> managers = new ArrayList<>();
         String sql = "SELECT * FROM users WHERE role = ?";
 
@@ -36,7 +37,7 @@ public class ManagerDaoImpl implements ManagerDaoIntf{
                 managers.add(manager);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new ManagerNotFound("Manager not found");
         }
 
         return managers;

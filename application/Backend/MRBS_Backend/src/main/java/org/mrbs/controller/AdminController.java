@@ -1,7 +1,9 @@
 package org.mrbs.controller;
 
 import org.mrbs.entity.*;
+import org.mrbs.model.exceptions.UserXMLProcessingException;
 import org.mrbs.service.impl.AdminService;
+import org.mrbs.service.intf.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +11,10 @@ import java.util.TreeSet;
 
 public class AdminController {
     private AdminService service;
-    public AdminController(AdminService service){
+    private UserService userService;
+    public AdminController(AdminService service, UserService userService){
         this.service = service;
+        this.userService = userService;
     }
 
     public void createMeetingRoom(User u, String roomId, String roomType, int roomCapacity){
@@ -58,5 +62,9 @@ public class AdminController {
         }
         else
             System.out.println("Sorry For The Inconvenience");
+    }
+
+    public void addUsersFromXML(String xmlFilePath) throws UserXMLProcessingException {
+        userService.addUsersFromXML(xmlFilePath);
     }
 }

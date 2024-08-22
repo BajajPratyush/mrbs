@@ -1,6 +1,7 @@
 package org.mrbs.service.impl;
 
 
+import org.mrbs.dao.intf.ManagerDaoIntf;
 import org.mrbs.entity.User;
 import org.mrbs.dao.impl.ManagerDaoImpl;
 import org.mrbs.model.exceptions.ManagerNotFound;
@@ -11,7 +12,11 @@ import java.util.List;
 
 public class ManagerService implements ManagerServiceIntf {
 
-    private ManagerDaoImpl managerDao = new ManagerDaoImpl();
+    private ManagerDaoIntf managerDao ;
+
+    public ManagerService(ManagerDaoIntf managerDao){
+        this.managerDao = managerDao;
+    }
 
     // Function to book a meeting room
     public boolean bookRoom(int managerId, int roomCost) throws ManagerNotFound {
@@ -33,7 +38,7 @@ public class ManagerService implements ManagerServiceIntf {
     }
 
     // Function to view all managers
-    public List<User> viewAllManagers() {
+    public List<User> viewAllManagers() throws SQLException, ManagerNotFound, ClassNotFoundException {
         return managerDao.findAllManagers();
     }
 
