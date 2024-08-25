@@ -7,8 +7,10 @@ import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.ManagerNotFound;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ManagerDaoImpl implements ManagerDaoIntf{
 
@@ -19,6 +21,105 @@ public class ManagerDaoImpl implements ManagerDaoIntf{
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
     }
+
+    public void addManager(User u) {
+        String sql = "INSERT INTO users (user_id, user_name, user_email, user_number, user_role, credits) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, u.getUserId());
+            stmt.setString(2, u.getUserName());
+            stmt.setString(3, u.getUserEmail());
+            stmt.setLong(4, u.getUserNumber());
+            stmt.setString(5, u.getUserRole().toString());
+            stmt.setInt(6, u.getCredits());
+
+            int rowsInserted = stmt.executeUpdate();  // Use executeUpdate for INSERT, UPDATE, DELETE
+
+            if (rowsInserted > 0) {
+                System.out.println("Manager added successfully!");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();  // Handle exceptions properly
+        }
+    }
+
+    public boolean bookRoomById(int managerId, int roomCost, String roomId, LocalDateTime startTime, LocalDateTime endTime, Set<Integer> amenityIds) throws ManagerNotFound, SQLException {
+        String insertMeetingSQL = "INSERT INTO meetings (start_time, end_time, room_id) VALUES (?, ?, ?)";
+        String insertUserMeetingSQL = "INSERT INTO user_meetings (user_id, meeting_id) VALUES (?, ?)";
+        String updateUserCreditsSQL = "UPDATE users SET credits = credits - ? WHERE user_id = ?";
+        String checkManagerCreditsSQL = "SELECT credits FROM users WHERE user_id = ?";
+
+        Connection conn = null;
+        PreparedStatement meetingStmt = null;
+        PreparedStatement userMeetingStmt = null;
+        PreparedStatement updateCreditsStmt = null;
+        PreparedStatement checkCreditsStmt = null;
+        ResultSet generatedKeys = null;
+        ResultSet creditsRS = null;
+
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            // Check if the manager has enough credits
+            checkCreditsStmt = conn.prepareStatement(checkManagerCreditsSQL);
+            checkCreditsStmt.setInt(1, managerId);
+            creditsRS = checkCreditsStmt.executeQuery();
+
+            if (creditsRS.next()) {
+                int managerCredits = creditsRS.getInt("credits");
+
+                if (managerCredits < roomCost) {
+                    System.out.println("Insufficient credits to book the room.");
+                    conn.rollback();
+                    return false;
+                }
+
+                // Insert the meeting into the meetings table
+                meetingStmt = conn.prepareStatement(insertMeetingSQL, Statement.RETURN_GENERATED_KEYS);
+                meetingStmt.setTimestamp(1, Timestamp.valueOf(startTime));
+                meetingStmt.setTimestamp(2, Timestamp.valueOf(endTime));
+                meetingStmt.setString(3, roomId);
+                meetingStmt.executeUpdate();
+
+                generatedKeys = meetingStmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int meetingId = generatedKeys.getInt(1);
+
+                    // Link the meeting to the manager in the user_meetings table
+                    userMeetingStmt = conn.prepareStatement(insertUserMeetingSQL);
+                    userMeetingStmt.setInt(1, managerId);
+                    userMeetingStmt.setInt(2, meetingId);
+                    userMeetingStmt.executeUpdate();
+
+                    // Deduct the room cost from the manager's credits
+                    updateCreditsStmt = conn.prepareStatement(updateUserCreditsSQL);
+                    updateCreditsStmt.setInt(1, roomCost);
+                    updateCreditsStmt.setInt(2, managerId);
+                    updateCreditsStmt.executeUpdate();
+
+                    conn.commit();
+                    return true;
+                } else {
+                    conn.rollback();
+                    return false;
+                }
+            } else {
+                System.out.println("Manager not found.");
+                conn.rollback();
+                return false;
+            }
+        } catch (SQLException e) {
+            if (conn != null) {
+                conn.rollback();
+            }
+//            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public List<User> findAllManagers()  {
         List<User> managers = new ArrayList<>();

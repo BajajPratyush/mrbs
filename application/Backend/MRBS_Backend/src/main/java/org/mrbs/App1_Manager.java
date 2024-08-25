@@ -5,6 +5,7 @@ import org.mrbs.controller.ManagerController;
 import org.mrbs.entity.Amenity;
 import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
+import org.mrbs.model.exceptions.ManagerNotFound;
 import org.mrbs.service.impl.AmenityService;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class App1_Manager {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ManagerNotFound {
 //        ManagerController managerController = new ManagerController();
         AmenityService amenityService = new AmenityService();
 
@@ -22,8 +23,8 @@ public class App1_Manager {
         ManagerController managerController = factory.getManagerController();
 //        User u1 = new User(99, "Pratyush", "pratyush.bajaj123@gmail.com", 9897476644L, UserRole.ADMIN);
         User u = new User(20, "Pratyush", "pratyush.bajaj123@gmail.com", 9897476644L, UserRole.MANAGER,2000);
-//        managerController.addManag(u);
-        // Example of viewing all managers
+        managerController.addManag(u);
+        // Example of viewing all mana/gers
         managerController.viewAllManagers();
 //        System.out.println("All Managers:");
 //        for (User manager : managers) {

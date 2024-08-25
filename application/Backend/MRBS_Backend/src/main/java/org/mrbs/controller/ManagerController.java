@@ -2,24 +2,42 @@ package org.mrbs.controller;
 
 
 import org.mrbs.entity.User;
+import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.ManagerNotFound;
 import org.mrbs.service.impl.ManagerService;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public class ManagerController {
 
-    private ManagerService managerService;
+    private ManagerService managerService ;
+    public ManagerController(ManagerService managerServiceIntf) {
+        this.managerService = managerServiceIntf;
+    }
+
+    public void addManag(User u)
+    {
+        managerService.addM(u);
+    }
 
     // Endpoint to book a meeting room
-    public boolean bookRoom( int managerId, int roomId)
-    {
-        try {
-            return managerService.bookRoom(managerId, roomId);
+    public boolean bookRoom(User u, int roomCost, String roomId, LocalDateTime startTime, LocalDateTime endTime, Set<Integer> amenityIds) {
+        if (u.getUserRole() != UserRole.MANAGER) {
+            System.out.println("Unauthorized Access");
+            System.exit(0);
         }
-        catch (ManagerNotFound e)
-        {
-            e.printStackTrace();
+
+        try {
+            boolean success = managerService.bookRoom(u.getUserId(), roomCost, roomId, startTime, endTime, amenityIds);
+            if (success) {
+                System.out.println("Room booked successfully");
+            } else {
+                System.out.println("Failed to book the room. Please try again.");
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while booking the room: " + e.getMessage());
         }
         return false;
     }

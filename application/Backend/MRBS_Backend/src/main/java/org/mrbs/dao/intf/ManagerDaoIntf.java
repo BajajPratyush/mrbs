@@ -11,4 +11,5 @@ public interface ManagerDaoIntf {
     public List<User> findAllManagers() throws ManagerNotFound, ClassNotFoundException, SQLException;
     public void updateManager(User manager) throws ManagerNotFound , SQLException;
     public User findManagerById(int id) throws ManagerNotFound;
+    public void addManager(User u);
 }
