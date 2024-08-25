@@ -6,12 +6,11 @@ import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.ManagerNotFound;
 
-import java.time.LocalDateTime;
-import java.util.*;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-import static java.sql.DriverManager.getConnection;
+import java.util.List;
+import java.util.Set;
 
 public class ManagerDaoImpl implements ManagerDaoIntf{
 

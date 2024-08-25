@@ -1,14 +1,12 @@
 package org.mrbs.service.impl;
 
 
-import org.mrbs.dao.intf.ManagerDaoIntf;
-import org.mrbs.entity.User;
 import org.mrbs.dao.impl.ManagerDaoImpl;
+import org.mrbs.entity.User;
 import org.mrbs.model.exceptions.ManagerNotFound;
 import org.mrbs.service.intf.ManagerServiceIntf;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;

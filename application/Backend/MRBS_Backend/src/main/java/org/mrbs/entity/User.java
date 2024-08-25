@@ -1,10 +1,7 @@
 package org.mrbs.entity;
 
-import org.mrbs.dao.impl.ManagerDaoImpl;
-import org.mrbs.dao.intf.ManagerDaoIntf;
-
-import java.util.TreeSet;
 import java.time.LocalDateTime;
+import java.util.TreeSet;
 
 public class User {
     private int userId;

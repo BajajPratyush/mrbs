@@ -2,13 +2,12 @@ package org.mrbs.controller;
 
 
 import org.mrbs.entity.User;
+import org.mrbs.entity.UserRole;
+import org.mrbs.service.intf.ManagerServiceIntf;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
-
-import org.mrbs.entity.UserRole;
-import org.mrbs.service.intf.ManagerServiceIntf;
 
 public class ManagerController {
     private ManagerServiceIntf service;

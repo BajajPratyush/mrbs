@@ -1,18 +1,11 @@
 package org.mrbs;
 
-import java.util.List;
-import java.util.Scanner;
-
 import org.mrbs.beanfactory.BeanFactory;
-import org.mrbs.entity.MeetingRoom;
-import org.mrbs.entity.User;
-import org.mrbs.entity.Amenity;
-import org.mrbs.entity.UserRole;
-import org.mrbs.service.impl.AmenityService;
 import org.mrbs.controller.AdminController;
-import org.mrbs.model.exceptions.InvalidMeetingRoomException;
-import org.mrbs.model.exceptions.MeetingRoomAlreadyPresentException;
-import org.mrbs.model.exceptions.MeetingRoomNotFound;
+import org.mrbs.entity.User;
+import org.mrbs.entity.UserRole;
+
+import java.util.Scanner;
 
 public class App {
 
