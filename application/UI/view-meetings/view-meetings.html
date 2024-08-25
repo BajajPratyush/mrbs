@@ -5,23 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Meetings</title>
     <link rel="stylesheet" href="view-meetings.css">
+    <link rel="stylesheet" href="calendar.css">
 </head>
 <body>
     <header>
         <h1>View Meetings</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Room Details</a></li>
-                <li><a href="view-meetings.html">View Meetings</a></li>
+                <li><a href="../home/home.html">Home</a></li>
+                <li><a href="../rooms/rooms.html">Room Details</a></li>
+                
             </ul>
         </nav>
     </header>
     <main>
         <h2>Your Meetings</h2>
         <div id="meeting-list">
-            <!-- Meeting details will be dynamically loaded here -->
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button id="prevWeek">&lt; Previous Week</button>
+                    
+                    <!-- New date selector and calendar button -->
+                    <div class="date-selector">
+                        <label for="datePicker">Select Date: </label>
+                        <input type="date" id="datePicker">
+                    </div>
+                    
+                    <div id="weekRange">Aug 19 - Aug 25</div>
+                    <button id="nextWeek">Next Week &gt;</button>
+                </div>
+                <div class="calendar-body">
+                    <div class="day-names">
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                        <div>Sun</div>
+                    </div>
+                    <div id="weekDays" class="days">
+                        <!-- Weekdays and meetings will be dynamically injected here -->
+                    </div>
+                </div>
+                </div>
         </div>
+        <!-- Modal for meeting details -->
+    <div id="meetingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-info">
+                <span>Date       :</span> <span id="modalDate"></span>
+            </div>
+            <div class="modal-info">
+                <span>Room Code  :</span> <span id="modalRoomCode"></span>
+            </div>
+            <div class="modal-info">
+                <span>Start Time :</span> <span id="modalStartTime"></span>
+            </div>
+            <div class="modal-info">
+                <span>End Time   :</span> <span id="modalEndTime"></span>
+            </div>
+            <div class="modal-info">
+                <span>Duration   :</span> <span id="modalDuration"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="calendar.js"></script>
     </main>
     <footer>
         <p>&copy; 2024 Automated Meeting Room Booking System</p>
