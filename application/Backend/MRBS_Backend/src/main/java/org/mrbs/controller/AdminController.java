@@ -5,17 +5,18 @@ import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.UserXMLProcessingException;
 import org.mrbs.service.impl.AdminService;
-import org.mrbs.service.intf.UserService;
+import org.mrbs.service.intf.AdminServiceIntf;
+import org.mrbs.service.intf.UserServiceIntf;
 
 import java.util.HashSet;
 import java.util.TreeSet;
 
 public class AdminController {
-    private AdminService service;
-    private UserService userService;
-    public AdminController(AdminService service, UserService userService){
+    private AdminServiceIntf service;
+    private UserServiceIntf userServiceIntf;
+    public AdminController(AdminService service, UserServiceIntf userServiceIntf){
         this.service = service;
-        this.userService = userService;
+        this.userServiceIntf = userServiceIntf;
     }
 
     public void createMeetingRoom(User u, String roomId, String roomType, int roomCapacity){
@@ -65,7 +66,11 @@ public class AdminController {
             System.out.println("Sorry For The Inconvenience");
     }
 
-    public void addUsersFromXML(String xmlFilePath) throws UserXMLProcessingException {
-        userService.addUsersFromXML(xmlFilePath);
+    public void addUsersFromXML(String xmlFilePath)  {
+        try {
+            userServiceIntf.addUsersFromXML(xmlFilePath);
+        } catch (UserXMLProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

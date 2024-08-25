@@ -4,7 +4,7 @@ import org.mrbs.dao.intf.UserDaoIntf;
 import org.mrbs.entity.User;
 import org.mrbs.entity.UserRole;
 import org.mrbs.model.exceptions.UserXMLProcessingException;
-import org.mrbs.service.intf.UserService;
+import org.mrbs.service.intf.UserServiceIntf;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,16 +16,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class UserService implements UserServiceIntf {
 
     private final UserDaoIntf userDao;
 
-    public UserServiceImpl(UserDaoIntf userDao) {
+    public UserService(UserDaoIntf userDao) {
         this.userDao = userDao;
     }
 
     @Override
-    public void addUsersFromXML(String xmlFilePath) throws UserXMLProcessingException {
+    public void addUsersFromXML(String xmlFilePath) {
         try {
             File file = new File(xmlFilePath);
             DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -54,7 +54,11 @@ public class UserServiceImpl implements UserService {
             userDao.addUsers(userList);
 
         } catch (Exception e) {
-            throw new UserXMLProcessingException("Error processing XML file", e);
+            try {
+                throw new UserXMLProcessingException("Error processing XML file", e);
+            } catch (UserXMLProcessingException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

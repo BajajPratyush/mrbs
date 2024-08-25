@@ -14,14 +14,15 @@ public class App {
         BeanFactory factory = new BeanFactory();
         AdminController controller = factory.getAdminController();
         User u = new User(1, "Pratyush", "pratyush.bajaj123@gmail.com", 9897476644L, UserRole.ADMIN);
-        User m1 = new User(12,"Raju","raju.herapheri@gmail.com",123456789L,UserRole.MANAGER,2000);
+        //User m1 = new User(12,"Raju","raju.herapheri@gmail.com",123456789L,UserRole.MANAGER,2000);
 
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Create Meeting Room");
             System.out.println("2. Update Meeting Room");
             System.out.println("3. View All Meeting Rooms");
-            System.out.println("4. Exit");
+            System.out.println("4. Add Users");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();  // Consume newline
@@ -58,6 +59,12 @@ public class App {
                     break;
 
                 case 4:
+                    System.out.println("Enter the path to UsersXML");
+                    String path = sc.nextLine();
+                    controller.addUsersFromXML(path);
+                    break;
+
+                case 5:
                     // Exit
                     System.out.println("Exiting...");
                     sc.close();
