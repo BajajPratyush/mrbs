@@ -8,13 +8,30 @@
 
 /* Body Styling */
 body {
-    background-color: #D80027; /* Red background */
+    background-color: #920404; /* Red background */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     text-align: center;
+}
+
+button {
+    background-color: #920404; /* Match the body background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #B2001D; /* Darker shade of red for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Header Styling */

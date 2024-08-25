@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="add-user.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New User</h1>
+        <form id="add-user-form">
+            <label for="user-name">Name:</label>
+            <input type="text" id="user-name" required>
+
+            <label for="user-email">Email:</label>
+            <input type="email" id="user-email" required>
+
+            <label for="user-phone">Phone:</label>
+            <input type="tel" id="user-phone" required>
+
+            <label for="user-role">Role:</label>
+            <select id="user-role" required>
+                <option value="Manager">Manager</option>
+                <option value="Employee">Employee</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+    <script src="add-user.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="add-user.css">
+</head>
+<body>
+    <header>
+        <a href="../home/home.html" class="home-button">Home</a>
+
+        <h1>Add New User</h1>
+    </header>
+    <nav>
+        <!-- Your navigation items here -->
+    </nav>
+    <div class="form-section">
+        <form id="add-user-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <button type="submit">Add User</button>
+            <a href="../admin/admin.html" class="back-button">Back to Dashboard</a>
+
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 Your Company
+    </footer>
+    <script src="add-user.js"></script>
+</body>
+</html>

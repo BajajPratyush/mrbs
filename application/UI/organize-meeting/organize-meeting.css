@@ -6,9 +6,8 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* Body Styling */
 body {
-    background-color: #D80027; /* Red background */
+    background-color: #920404; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,11 +16,10 @@ body {
     text-align: center;
 }
 
-/* Header Styling */
 header {
     width: 100%;
     background-color: #333;
-    padding: 10px 0;
+    padding: 5px 0; /* Reduced padding */
     color: white;
     position: fixed;
     top: 0;
@@ -29,26 +27,25 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1000; /* Ensure header is above other content */
+    z-index: 1000;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 1.8em; /* Reduced font size */
+    margin-bottom: 5px; /* Reduced margin */
 }
 
-/* Main Content Styling */
 main {
     width: 100%;
     max-width: 800px;
-    padding: 100px 20px 20px; /* Added top padding to accommodate the fixed header */
-    background-color: #F8B8C0; /* Light pink background */
+    padding: 80px 20px 20px; /* Adjusted padding to account for smaller header */
+    background-color: #f8c2b8; 
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 form {
-    background-color: #fff; /* White background for form */
+    background-color: #fff; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -71,11 +68,11 @@ input, select, button {
 }
 
 input[type="datetime-local"] {
-    padding: 7px; /* Adjust padding for date-time input */
+    padding: 7px; 
 }
 
 button {
-    background-color: #F8B8C0; /* Light pink background */
+    background-color: #F8B8C0; 
     border: none;
     color: black;
     font-size: 1.1em;
@@ -83,16 +80,16 @@ button {
 }
 
 button:hover {
-    background-color: #ffb3c2; /* Slightly lighter pink on hover */
+    background-color: #ffb3c2; 
 }
 
-/* Footer Styling */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 5px; /* Reduced padding */
     text-align: center;
-}
+    font-size: 0.9em; /* Reduced font size */
+} 

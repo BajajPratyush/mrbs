@@ -103,24 +103,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     bookingForm.addEventListener('submit', function (event) {
         event.preventDefault();
-
-        const roomName = roomNameInput.value;
+        
+        const roomName = roomNameInput.value.trim();
         const seatingCapacity = seatingCapacityInput.value;
         const perHourCost = perHourCostInput.value;
         const meetingType = meetingTypeSelect.value;
-        const selectedAmenities = Array.from(checkboxes)
+        const amenities = Array.from(checkboxes)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.value);
-
-        summaryDetails.innerHTML = `
-            <p><strong>Room Name:</strong> ${roomName}</p>
-            <p><strong>Seating Capacity:</strong> ${seatingCapacity}</p>
-            <p><strong>Per Hour Cost (in credits):</strong> ${perHourCost}</p>
-            <p><strong>Meeting Type:</strong> ${meetingType.charAt(0).toUpperCase() + meetingType.slice(1).replace('-', ' ')}</p>
-            <p><strong>Amenities:</strong> ${selectedAmenities.length ? selectedAmenities.join(', ') : 'None selected'}</p>
-        `;
-
-        bookingSummary.style.display = 'block';
+    
+        if (roomName && seatingCapacity && perHourCost && meetingType) {
+            const roomData = {
+                roomName,
+                seatingCapacity,
+                perHourCost,
+                meetingType,
+                amenities
+            };
+    
+            let rooms = JSON.parse(localStorage.getItem('rooms')) || [];
+            rooms.push(roomData);
+            localStorage.setItem('rooms', JSON.stringify(rooms));
+    
+            window.location.href = '../rooms/rooms.html'; // Redirect to rooms.html
+        }
     });
 
     document.addEventListener('click', function (event) {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <name>Vansh Sharma</name>
+        <email>admin@example.com</email>
+        <phone>1234567890</phone>
+        <role>Admin</role>
+    </user>
+    <user>
+        <name>Rajshree Bansal</name>
+        <email>manager@example.com</email>
+        <phone>0987654321</phone>
+        <role>Manager</role>
+    </user>
+    <user>
+        <name>Pratyush Bajaj</name>
+        <email>member@example.com</email>
+        <phone>1122334455</phone>
+        <role>Member</role>
+    </user>
+</users>

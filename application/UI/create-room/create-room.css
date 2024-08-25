@@ -1,3 +1,4 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 /* Body Styling */
 body {
-    background-color: #D80027; /* Red background */
+    background-color: #f9f9f9; /* Light background */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +22,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #920404; /* Red header */
     padding: 20px 0;
     color: white;
     text-align: center;
@@ -32,8 +33,30 @@ header h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 2.5em;
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
     margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #F2F2F2; /* Light grey background */
 }
 
 /* Main Content Styling */
@@ -49,18 +72,23 @@ main {
 
 /* Form Styling */
 form {
-    background-color: #F8B8C0; /* Light pink background */
+    background-color: #ffffff; /* White background */
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    width: 100%;
+    max-width: 500px;
     text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 form label {
     font-weight: 500;
     font-size: 1em;
-    color: black;
+    color: #333;
     margin-bottom: 8px;
     display: block;
 }
@@ -69,12 +97,17 @@ form input[type="text"],
 form input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: none;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #fff;
     font-size: 1em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
 }
 
 form input[type="checkbox"] {
@@ -85,13 +118,9 @@ form input[type="checkbox"] {
 form label[for="projector"],
 form label[for="wifi"],
 form label[for="conference-call"] {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: block;
     font-size: 1em;
-}
-
-form div {
-    margin-bottom: 20px;
 }
 
 form button {
@@ -99,14 +128,15 @@ form button {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #920404; /* Red button */
+    color: white;
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 form button:hover {
-    background-color: #f0f0f0;
+    background-color: #cc0000; /* Darker red on hover */
 }
 
 /* Footer Styling */
@@ -114,7 +144,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #920404; /* Red footer */
     color: white;
     padding: 10px;
     text-align: center;

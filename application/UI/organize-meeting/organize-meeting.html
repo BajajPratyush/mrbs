@@ -17,20 +17,26 @@
 
             <label for="room-selection">Select Room:</label>
             <select id="room-selection">
-                <option value="roomA">Room A</option>
-                <option value="roomB">Room B</option>
-                <!-- Add more rooms dynamically -->
+                <!-- Room options will be populated here -->
             </select>
 
-            <label for="meeting-time">Meeting Time:</label>
-            <input type="datetime-local" id="meeting-time" required>
+            <label for="meeting-start">Meeting Start Time:</label>
+            <input type="datetime-local" id="meeting-start" required>
 
+            <label for="meeting-end">Meeting End Time:</label>
+            <input type="datetime-local" id="meeting-end" required>
+
+            <fieldset id="amenities-section">
+                <legend>Select Amenities:</legend>
+                <!-- Amenities checkboxes will be populated here -->
+            </fieldset>
+            <br/>
             <button type="submit">Book Meeting Room</button>
         </form>
     </main>
     <footer>
         <p>&copy; 2024 Automated Meeting Room Booking System</p>
     </footer>
-    <script src="manager.js"></script>
+    <script src="organize-meeting.js"></script>
 </body>
 </html>
