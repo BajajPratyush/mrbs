@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #920404; /* Adjusted Red header */
+    background-color: #920404; /* Red header */
     color: white;
     padding: 20px;
     text-align: center;
@@ -46,19 +46,27 @@ footer {
     background-color: #920404; /* Red footer */
     color: white;
     text-align: center;
-    padding: 0px; /* Further reduced padding for footer */
+    padding: 0px; /* Reduced padding for footer */
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
+/* Form and Summary Section Styles */
 .form-section, .summary-section {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    border: 2px solid #920404; /* Red border */
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2, .summary-section h2 {
+    color: #920404; /* Red color for headers */
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 
 /* Form Styles */
@@ -137,11 +145,9 @@ button:hover {
 .summary-section {
     display: none;
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    border: 2px solid #920404; /* Red border */
 }
 
 #summary-details {
     padding: 10px;
 }
-
-
