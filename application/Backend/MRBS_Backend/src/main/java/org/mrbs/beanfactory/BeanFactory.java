@@ -5,11 +5,9 @@ import org.mrbs.controller.ManagerController;
 import org.mrbs.dao.impl.AdminDaoImpl;
 import org.mrbs.dao.impl.ManagerDaoImpl;
 import org.mrbs.dao.intf.AdminDaoIntf;
-import org.mrbs.dao.intf.ManagerDaoIntf;
 import org.mrbs.service.impl.AdminService;
 import org.mrbs.service.impl.AmenityService;
 import org.mrbs.service.impl.ManagerService;
-import org.mrbs.service.intf.ManagerServiceIntf;
 
 public class BeanFactory {
     private AdminDaoIntf adminDao;
@@ -18,8 +16,8 @@ public class BeanFactory {
     private AmenityService amenityService;
 
     private ManagerController managerController;
-    private ManagerServiceIntf managerServiceIntf;
-    private ManagerDaoIntf managerDaoIntf;
+    private ManagerService managerService;
+    private ManagerDaoImpl managerDao;
 
     public BeanFactory(){
         adminDao = new AdminDaoImpl();
@@ -27,9 +25,11 @@ public class BeanFactory {
         adminController = new AdminController(adminService);
         amenityService = new AmenityService();
 
-        managerController = new ManagerController();
-        managerDaoIntf = new ManagerDaoImpl();
-        managerServiceIntf = new ManagerService();
+
+        managerDao = new ManagerDaoImpl();
+        managerService = new ManagerService(managerDao);
+        managerController = new ManagerController(managerService);
+
     }
 
     public AdminController getAdminController() {
