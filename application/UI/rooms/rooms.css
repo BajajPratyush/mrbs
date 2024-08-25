@@ -1,97 +1,74 @@
-* {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
-/* Body Styling */
-body {
-    background-color: #D80027; /* Red background */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding-top: 80px; /* Space for the fixed header */
-}
-
-/* Header Styling */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #333;
-    padding: 20px 0;
+    background-color: #920404; /* Red header */
     color: white;
+    padding: 20px;
     text-align: center;
-    z-index: 1000; /* Ensure the header is above other content */
 }
 
-header h1 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 10px;
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
 }
 
-header nav ul {
-    list-style-type: none;
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 0;
+}
+
+nav ul li {
     margin: 0;
 }
 
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    background-color: #F8B8C0; /* Light pink background */
-}
-
-/* Main Content Styling */
-main {
-    width: 80%;
-    margin: 20px auto;
-    background-color: #F8B8C0; /* Light pink background */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    margin-top: 80px; /* Space for the fixed header */
-}
-
-main h2 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 1.8em;
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
     color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+    text-decoration: none;
 }
 
-#room-details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+nav ul li a:hover {
+    background-color: #f2f2f2;
 }
 
-/* Footer Styling */
 footer {
+    background-color: #920404; /* Red footer */
+    color: white;
+    text-align: center;
+    padding: 5px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+}
+
+main {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.room-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.room-card h3 {
+    margin-top: 0;
 }
