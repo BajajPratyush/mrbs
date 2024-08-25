@@ -1,5 +1,8 @@
 package org.mrbs.entity;
 
+import org.mrbs.dao.impl.ManagerDaoImpl;
+import org.mrbs.dao.intf.ManagerDaoIntf;
+
 import java.util.TreeSet;
 import java.time.LocalDateTime;
 
@@ -12,14 +15,23 @@ public class User {
     private int credits;
     private TreeSet<Meeting> meetings;
 
-    private static int idGenerator = 0;
-
+//    private static int idGenerator = 0;
+//
     public User(int userId, String userName, String userEmail, Long userNumber, UserRole userRole) {
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNumber = userNumber;
         this.userRole = userRole;
+    }
+
+    public User(int userId, String userName, String userEmail, Long userNumber, UserRole userRole, int credits) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userNumber = userNumber;
+        this.userRole = userRole;
+        this.credits = credits;
     }
 
     public User(int userId, String userName, String userEmail, Long userNumber, UserRole userRole, int credits, Meeting m) {

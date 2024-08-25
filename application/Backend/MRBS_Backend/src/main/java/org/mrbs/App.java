@@ -21,7 +21,7 @@ public class App {
         BeanFactory factory = new BeanFactory();
         AdminController controller = factory.getAdminController();
         User u = new User(1, "Pratyush", "pratyush.bajaj123@gmail.com", 9897476644L, UserRole.ADMIN);
-
+        User m1 = new User(12,"Raju","raju.herapheri@gmail.com",123456789L,UserRole.MANAGER,2000);
 
         while (true) {
             System.out.println("Menu:");
