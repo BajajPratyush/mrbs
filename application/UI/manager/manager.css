@@ -1,0 +1,82 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #920404; /* Red background */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Navbar Styling */
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the items */
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+header nav ul li a:hover {
+    color: #F8B8C0; /* Light pink for hover effect */
+}
+
+/* Main Content Styling */
+main {
+    text-align: center;
+    margin-top: 100px; /* Adjust to account for the fixed header */
+    padding: 20px;
+}
+
+main h2 {
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
