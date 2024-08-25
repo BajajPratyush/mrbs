@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #920404; /* Adjusted Red header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #f2f2f2;
+}
+
+footer {
+    background-color: #920404; /* Red footer */
+    color: white;
+    text-align: center;
+    padding: 5px; /* Reduced padding for footer */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.form-section, .summary-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #920404; /* Red button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+/* Dropdown Styles */
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.selected-options {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.options-container {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.options-container label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.options-container label:hover {
+    background-color: #f2f2f2;
+}
+
+.options-container.active {
+    display: block;
+}
+
+/* Summary Section Styles */
+.summary-section {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+#summary-details {
+    padding: 10px;
+}
