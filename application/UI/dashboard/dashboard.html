@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meeting Room Booking Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <header>
@@ -12,14 +12,15 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Create Room</a></li>
-            <li><a href="#">View Rooms</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="../home/home.html">Home</a></li>
+            
+            <li><a href="../rooms/rooms.html">View Rooms</a></li>
+        
+            
         </ul>
     </nav>
     <section class="form-section">
-        <h2>Create a Meeting Room</h2>
+        <h2>Book a Meeting Room</h2>
         <form id="booking-form">
             <div class="form-group">
                 <label for="room-name">Room Name:</label>
@@ -70,6 +71,6 @@
     <footer>
         <p>&copy; 2024 Automated Meeting Room Booking System</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
