@@ -27,6 +27,16 @@ public class AmenityService implements AmenityServiceIntf {
         // Add more amenities as needed
     }
 
+    public static Amenity getAmenityByName(String name) {
+        for (Map.Entry<Integer, Amenity> entry : AmenityService.amenities.entrySet()) {
+            Amenity amenity = entry.getValue();
+            if (amenity.getAmenityName().equalsIgnoreCase(name)) {
+                return amenity;
+            }
+        }
+        return null; // Return null if no amenity with the given name is found
+    }
+
     public Amenity getAmenity(int amenityId) {
         return amenities.get(amenityId);
     }

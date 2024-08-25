@@ -1,6 +1,9 @@
 package org.mrbs.entity;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class MeetingRoom {
     private String roomId;
@@ -36,7 +39,6 @@ public class MeetingRoom {
                 ", roomCredits=" + roomCredits +
                 ", roomCapacity=" + roomCapacity +
                 ", addedAmenities=" + addedAmenities +
-                ", meetings=" + meetings +
                 '}';
     }
 

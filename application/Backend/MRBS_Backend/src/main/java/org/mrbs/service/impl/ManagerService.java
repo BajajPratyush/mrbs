@@ -7,28 +7,21 @@ import org.mrbs.model.exceptions.ManagerNotFound;
 import org.mrbs.service.intf.ManagerServiceIntf;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 public class ManagerService implements ManagerServiceIntf {
 
-    private ManagerDaoImpl managerDao;
-
-    public ManagerService(ManagerDaoImpl managerDao) {
-        this.managerDao = managerDao;
-    }
-
-    public void addMan(User user)
-    {
-        managerDao.AddManager(user);
-    }
+    private ManagerDaoImpl managerDao = new ManagerDaoImpl();
 
     // Function to book a meeting room
-    public boolean bookRoom(int managerId, int roomCost, String roomId, LocalDateTime startTime, LocalDateTime endTime, Set<Integer> amenityIds)throws ManagerNotFound{
-//    public boolean bookRoom(int managerId, int roomCost,) throws ManagerNotFound {
+    public boolean bookRoom(int managerId, int roomCost) throws ManagerNotFound {
         try {
-            return managerDao.bookRoomById(managerId,roomCost,roomId,startTime,endTime,amenityIds);
+            User manager = managerDao.findManagerById(managerId);
+            if (manager.getCredits() >= roomCost) {
+                manager.setCredits(manager.getCredits() - roomCost);
+                managerDao.updateManager(manager);
+                return true; // Room booked successfully
+            }
         }
         catch (ManagerNotFound e)
         {
@@ -36,10 +29,9 @@ public class ManagerService implements ManagerServiceIntf {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        // Insufficient credits
+        return false; // Insufficient credits
     }
 
-    @Override
     // Function to view all managers
     public List<User> viewAllManagers() {
         return managerDao.findAllManagers();

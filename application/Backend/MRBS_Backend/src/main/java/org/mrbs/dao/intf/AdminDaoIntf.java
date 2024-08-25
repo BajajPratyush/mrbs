@@ -12,4 +12,5 @@ public interface AdminDaoIntf {
     public int addMeetingRoom(MeetingRoom mr) throws ClassNotFoundException, MeetingRoomAlreadyPresentException, InvalidMeetingRoomException;
     public int manageMeetingRoom(MeetingRoom mr) throws ClassNotFoundException, InvalidMeetingRoomException,MeetingRoomAlreadyPresentException;
     public List<MeetingRoom> allMeetingRooms() throws ClassNotFoundException, SQLException, MeetingRoomNotFound;
+
 }
