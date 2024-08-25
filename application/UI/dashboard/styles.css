@@ -46,7 +46,7 @@ footer {
     background-color: #920404; /* Red footer */
     color: white;
     text-align: center;
-    padding: 5px; /* Reduced padding for footer */
+    padding: 0px; /* Further reduced padding for footer */
     position: fixed;
     bottom: 0;
     width: 100%;
